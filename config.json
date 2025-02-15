@@ -1,0 +1,25 @@
+{
+    "channel": "localhost:50051",
+    "options": [
+      ["grpc.lb_policy_name", "round_robin"],
+      ["grpc.keepalive_time_ms", 10000]
+    ],
+    "service_config": {
+      "methodConfig": [
+        {
+          "name": [
+            {
+              "service": "pingpong.PingPong",
+              "method": "Ping"
+            }
+          ],
+          "waitForReady": true,
+          "timeout": "300s"
+        }
+      ],
+      "healthCheckConfig": {
+        "serviceName": ""
+      }
+    }
+  }
+  

@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Proto generated files
+**/*_pb2*.py
+
+# makefile stamps
+**/*.stamp
