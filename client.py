@@ -10,9 +10,9 @@ MAGENTA = "\033[35m"
 RESET = "\033[0m"
 
 def load_config(config_file="config.json"):
-    with open(config_file, "r") as f:
-        return json.load(f)
-
+   with open(config_file, "r") as f:
+       return json.load(f)
+   
 async def run():
     # Load configuration from JSON
     config = load_config()

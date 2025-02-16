@@ -7,12 +7,6 @@
     "service_config": {
       "methodConfig": [
         {
-          "name": [
-            {
-              "service": "pingpong.PingPong",
-              "method": "Ping"
-            }
-          ],
           "waitForReady": true,
           "timeout": "300s"
         }
