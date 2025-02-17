@@ -13,18 +13,16 @@ def load_config(config_file="config.json"):
    with open(config_file, "r") as f:
        return json.load(f)
    
+def grpc_config_value(value):
+    return value if isinstance(value, (str, int, float, bool)) else json.dumps(value)
+
 async def run():
     # Load configuration from JSON
     config = load_config()
     target = config.get("channel", "localhost:50051")
     
     # Convert channel options (list of lists) into tuples
-    options = [tuple(option) for option in config.get("options", [])]
-    
-    # Add the complete service config as a channel option if provided.
-    service_config = config.get("service_config")
-    if service_config:
-        options.append(("grpc.service_config", json.dumps(service_config)))
+    options = [(key, grpc_config_value(value)) for [key,value] in config.get("options", [])]
     
     # Create an asynchronous gRPC channel using the target and options.
     # Notice the tracer is now "health_check_client,client_channel" per documentation.

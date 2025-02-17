@@ -2,18 +2,18 @@
     "channel": "localhost:50051",
     "options": [
       ["grpc.lb_policy_name", "round_robin"],
-      ["grpc.keepalive_time_ms", 10000]
-    ],
-    "service_config": {
-      "methodConfig": [
-        {
-          "waitForReady": true,
-          "timeout": "300s"
+      ["grpc.keepalive_time_ms", 10000],
+      ["grpc.service_config", {
+        "methodConfig": [
+          {
+            "waitForReady": true,
+            "timeout": "300s"
+          }
+        ],
+        "healthCheckConfig": {
+          "serviceName": ""
         }
-      ],
-      "healthCheckConfig": {
-        "serviceName": ""
-      }
-    }
+      }]
+    ]
   }
   
