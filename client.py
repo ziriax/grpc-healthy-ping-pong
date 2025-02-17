@@ -32,7 +32,7 @@ async def run():
         while True:
             request = pingpong_pb2.PingRequest(message="Ping")
             try:
-                response = await stub.Ping(request, wait_for_ready=True)
+                response = await stub.Ping(request)
                 print(f"{GREEN}client: Received response: {response.message}{RESET}")
             except grpc.RpcError as e:
                 print(f"{MAGENTA}client: Request failed: {e}{RESET}")
